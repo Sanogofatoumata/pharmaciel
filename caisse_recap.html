@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<link rel="stylesheet" href="lib/css/styl.css"/>-->
+        <style>
+            /* RESET GENERAL */
+            *,
+            *::before,
+            *::after{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body{
+                background-color: #66FF99;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* On donne une hauteur de 100% de l'écran, les éléments d'alignent au centre de la page grâce aux propriétés FLEXBOX */
+                height: 100vh; 
+                font-family: "monospace";
+                text-align: center;
+                margin:0;
+                padding:5%;
+            }
+
+            *{
+                box-sizing: border-box;
+            }
+
+            .table{
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #000;
+            }
+
+            .table td,.table th{
+            padding:12px 15px;
+            border:1px solid #ddd;
+            text-align: center;
+            font-size:16px;
+            }
+
+            .table th{
+                background-color: #dfdbdb;
+                color:#000000;
+            }
+
+            .table tbody tr:nth-child(odd){
+                background-color: #009900;
+                color:#FFFFFF;
+            }
+
+            .table tbody tr:nth-child(even){
+                background-color: #FFFFFF;
+                color:#000000;
+            }
+            /*responsive*/
+
+            @media(max-width: 500px){
+                .table thead{
+                    display: none;
+                }
+
+                .table, .table tbody, .table tr, .table td{
+                    display: block;
+                    width: 100%;
+                }
+                .table tr{
+                    margin-bottom:15px;
+                }
+                .table td{
+                    text-align: right;
+                    padding-left: 50%;
+                    text-align: right;
+                    position: relative;
+                }
+                .table td::before{
+                    content: attr(data-label);
+                    position: absolute;
+                    left:0;
+                    width: 50%;
+                    padding-left: 15px;
+                    font-size: 15px;
+                    font-weight: bold;
+                    text-align: left;
+                }
+            }
+
+            label{
+                padding: 10px;
+                padding-top: 10px;
+            }
+
+            .containt{
+                position: relative;
+                width: 00px;
+            }
+
+            .containt1{
+                text-align: right;
+                font-size: 20px;
+                position: relative;
+                left: -32%;
+                padding: 10px;
+            }
+
+            .containt2{
+                text-align: right;
+                font-size: 20px;
+                position: relative;
+                right: -29%;
+                padding: 10px;
+            }
+            button{
+                width: 10%;
+                height: 8%;
+                background-color: #009900;
+                color: #FFFFFF;
+            }
+        </style>
+    </head>
+
+    <body id="body">
+
+        <button onclick="printPage()">IMPRIMER</button>
+
+        <div id="container">
+            <div class="containt1">
+                <label for="">Ticket N° :</label><input type="text"><br>
+                <label for="">Date :</label><input type="text"><br>
+                <label for="">N° Assuré :</label><input type="text"><br>
+                <label for="">Assurance :</label><input type="text">
+            </div><br>
+
+            <div class="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Identification</th>
+                            <th>Description</th>
+                            <th>Prix unitaire</th>
+                            <th>Quantité</th>
+                            <th>Remise</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                                <td data-label="">aaaaa</td>
+                                <td data-label="">bbbbb</td>
+                                <td data-label="">ccccc</td>
+                                <td data-label="">ddddd</td>
+                                <td data-label="">eeeee</td>
+                                <td data-label="">fffff</td>
+                        </tr>
+            
+                        <tr>
+                            <td data-label="">ggggggggg</td>
+                            <td data-label="">hhhhhhhhh</td>
+                            <td data-label="">iiiiiiiii</td>
+                            <td data-label="">jjjjjjjjj</td>
+                            <td data-label="">kkkkkkkkk</td>
+                            <td data-label="">lllllllll</td>
+                        </tr>
+            
+                        <tr>
+                            <td data-label="">mmmmmmmmm</td>
+                            <td data-label="">nnnnnnnnn</td>
+                            <td data-label="">ooooooooo</td>
+                            <td data-label="">ppppppppp</td>
+                            <td data-label="">qqqqqqqqq</td>
+                            <td data-label="">rrrrrrrrr</td>
+                        </tr>
+            
+                        <tr>
+                            <td data-label=""></td>
+                            <td data-label=""></td>
+                            <td data-label=""></td>
+                            <td data-label=""></td>
+                            <td data-label=""></td>
+                            <td data-label=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><br>
+
+            <div class="containt2">
+                <label for="">Total HT :</label><input type="text"><br>
+                <label for="">TVA :</label><input type="text"><br>
+                <label for="">Total TTC :</label><input type="text"><br>
+                <label for="">Montant réglé :</label><input type="text"><br>
+                <label for="">Montant rendu :</label><input type="text">
+            </div>
+        </div>
+    </body>
+
+    <script type="text/javascript">
+        function printPage() {
+            var body = document.getElementById('body').innerHTML;
+            var container = document.getElementById('container').innerHTML;
+            document.getElementById('body').innerHTML = container;
+            window.print();
+            document.getElementById('body').innerHTML = body;
+        }
+    </script>
+
+</html>
